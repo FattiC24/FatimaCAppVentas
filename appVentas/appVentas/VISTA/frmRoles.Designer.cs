@@ -34,11 +34,14 @@
             // 
             // dtVistaRoles
             // 
+            this.dtVistaRoles.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtVistaRoles.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dtVistaRoles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtVistaRoles.Location = new System.Drawing.Point(71, 47);
             this.dtVistaRoles.Name = "dtVistaRoles";
             this.dtVistaRoles.Size = new System.Drawing.Size(422, 150);
             this.dtVistaRoles.TabIndex = 0;
+            this.dtVistaRoles.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtVistaRoles_CellContentClick);
             // 
             // frmRoles
             // 

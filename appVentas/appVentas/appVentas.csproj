@@ -61,7 +61,13 @@
     <Compile Include="Logueo.Designer.cs">
       <DependentUpon>Logueo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\roles_usuario.cs">
+    <Compile Include="Model\detalleVenta.cs">
+      <DependentUpon>sistema_ventas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\producto.cs">
+      <DependentUpon>sistema_ventas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\roles_usuarios.cs">
       <DependentUpon>sistema_ventas.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\sistema_ventas.Context.cs">
@@ -79,11 +85,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>sistema_ventas.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\sysdiagrams.cs">
+      <DependentUpon>sistema_ventas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tb_cliente.cs">
+      <DependentUpon>sistema_ventas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tb_documento.cs">
+      <DependentUpon>sistema_ventas.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\tb_usuarios.cs">
+      <DependentUpon>sistema_ventas.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tb_Venta.cs">
       <DependentUpon>sistema_ventas.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VISTA\FormularioDeBusqueda\frmBusqueda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\FormularioDeBusqueda\frmBusqueda.Designer.cs">
+      <DependentUpon>frmBusqueda.cs</DependentUpon>
+    </Compile>
     <Compile Include="VISTA\frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +126,12 @@
     <Compile Include="VISTA\frmUsuario.Designer.cs">
       <DependentUpon>frmUsuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="VISTA\frmVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VISTA\frmVentas.Designer.cs">
+      <DependentUpon>frmVentas.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Logueo.resx">
       <DependentUpon>Logueo.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +144,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VISTA\FormularioDeBusqueda\frmBusqueda.resx">
+      <DependentUpon>frmBusqueda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VISTA\frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,6 +155,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VISTA\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VISTA\frmVentas.resx">
+      <DependentUpon>frmVentas.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\sistema_ventas.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -145,10 +181,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Model\sistema_ventas.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>sistema_ventas.Context.cs</LastGenOutput>
       <DependentUpon>sistema_ventas.edmx</DependentUpon>
+      <LastGenOutput>sistema_ventas.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Model\sistema_ventas.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -156,8 +195,6 @@
       <LastGenOutput>sistema_ventas.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

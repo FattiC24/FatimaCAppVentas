@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dtvUsuarios = new System.Windows.Forms.DataGridView();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Contrasenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnCargar = new System.Windows.Forms.Button();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtContraseña = new System.Windows.Forms.TextBox();
@@ -37,9 +40,6 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contraseña = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Contrasenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,6 +61,24 @@
             this.dtvUsuarios.Size = new System.Drawing.Size(613, 231);
             this.dtvUsuarios.TabIndex = 0;
             this.dtvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtvUsuarios_CellClick);
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Id";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            // 
+            // Contraseña
+            // 
+            this.Contraseña.HeaderText = "Email";
+            this.Contraseña.Name = "Contraseña";
+            this.Contraseña.ReadOnly = true;
+            // 
+            // Contrasenia
+            // 
+            this.Contrasenia.HeaderText = "Contraseña";
+            this.Contrasenia.Name = "Contrasenia";
+            this.Contrasenia.ReadOnly = true;
             // 
             // btnCargar
             // 
@@ -140,29 +158,11 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Contraseña";
             // 
-            // Email
-            // 
-            this.Email.HeaderText = "Id";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            // 
-            // Contraseña
-            // 
-            this.Contraseña.HeaderText = "Email";
-            this.Contraseña.Name = "Contraseña";
-            this.Contraseña.ReadOnly = true;
-            // 
-            // Contrasenia
-            // 
-            this.Contrasenia.HeaderText = "Contraseña";
-            this.Contrasenia.Name = "Contrasenia";
-            this.Contrasenia.ReadOnly = true;
-            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(637, 380);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);

@@ -23,8 +23,8 @@ namespace appVentas.VISTA
             using (sistema_ventasEntities bd = new sistema_ventasEntities())
             {
                 var Jointablas = from tbusua in bd.tb_usuarios
-                                 from rolesusuarios in bd.roles_usuario
-                                 where tbusua.Id == rolesusuarios.id_usuario
+                                 from rolesusuarios in bd.roles_usuarios
+                                 where tbusua.Id == rolesusuarios.id_Rol_Usuario
 
                                  select new
                                  {
@@ -34,6 +34,11 @@ namespace appVentas.VISTA
                                  };
                 dtVistaRoles.DataSource = Jointablas.ToList();
             }
+        }
+
+        private void dtVistaRoles_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
