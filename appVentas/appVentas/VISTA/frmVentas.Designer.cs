@@ -55,7 +55,9 @@
             this.cmbTipoDoc = new System.Windows.Forms.ComboBox();
             this.cmbCliente = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.txtCalcularTotal = new System.Windows.Forms.TextBox();
+            this.txtTotalFinal = new System.Windows.Forms.TextBox();
+            this.btnGuardar = new System.Windows.Forms.Button();
+            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -297,21 +299,41 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(496, 417);
+            this.label10.Location = new System.Drawing.Point(126, 429);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(177, 31);
             this.label10.TabIndex = 23;
             this.label10.Text = "Total a pagar $:";
             // 
-            // txtCalcularTotal
+            // txtTotalFinal
             // 
-            this.txtCalcularTotal.Enabled = false;
-            this.txtCalcularTotal.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCalcularTotal.Location = new System.Drawing.Point(692, 405);
-            this.txtCalcularTotal.Multiline = true;
-            this.txtCalcularTotal.Name = "txtCalcularTotal";
-            this.txtCalcularTotal.Size = new System.Drawing.Size(211, 55);
-            this.txtCalcularTotal.TabIndex = 24;
+            this.txtTotalFinal.Enabled = false;
+            this.txtTotalFinal.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalFinal.Location = new System.Drawing.Point(302, 417);
+            this.txtTotalFinal.Multiline = true;
+            this.txtTotalFinal.Name = "txtTotalFinal";
+            this.txtTotalFinal.Size = new System.Drawing.Size(211, 55);
+            this.txtTotalFinal.TabIndex = 24;
+            // 
+            // btnGuardar
+            // 
+            this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardar.Location = new System.Drawing.Point(779, 417);
+            this.btnGuardar.Name = "btnGuardar";
+            this.btnGuardar.Size = new System.Drawing.Size(136, 43);
+            this.btnGuardar.TabIndex = 25;
+            this.btnGuardar.Text = "Guardar venta";
+            this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
+            // 
+            // dtpFecha
+            // 
+            this.dtpFecha.CustomFormat = "yyyy-MM-dd";
+            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFecha.Location = new System.Drawing.Point(720, 102);
+            this.dtpFecha.Name = "dtpFecha";
+            this.dtpFecha.Size = new System.Drawing.Size(200, 26);
+            this.dtpFecha.TabIndex = 26;
             // 
             // frmVentas
             // 
@@ -320,7 +342,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(961, 484);
-            this.Controls.Add(this.txtCalcularTotal);
+            this.Controls.Add(this.dtpFecha);
+            this.Controls.Add(this.btnGuardar);
+            this.Controls.Add(this.txtTotalFinal);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbCliente);
             this.Controls.Add(this.cmbTipoDoc);
@@ -381,6 +405,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TOTAL;
         private System.Windows.Forms.Label label10;
         public System.Windows.Forms.TextBox txtCantidad;
-        public System.Windows.Forms.TextBox txtCalcularTotal;
+        public System.Windows.Forms.TextBox txtTotalFinal;
+        private System.Windows.Forms.Button btnGuardar;
+        private System.Windows.Forms.DateTimePicker dtpFecha;
     }
 }

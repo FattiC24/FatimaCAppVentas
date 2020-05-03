@@ -31,10 +31,13 @@ namespace appVentas.VISTA
             using (sistema_ventasEntities db = new sistema_ventasEntities())
             {
                 var tb_V = db.tb_Venta;
-
+                txtIdNumeracion.Text = "1";
                 foreach (var iterardatostbVentas in tb_V)
                 {
-                    txtIdNumeracion.Text = iterardatostbVentas.idVenta.ToString();
+                    int idVenta = iterardatostbVentas.idVenta;
+                    int suma = idVenta + 1;
+                    txtIdNumeracion.Text = suma.ToString();
+                    
                     //dtvVentas.Rows.Add(iterardatostbUsuario.Id, iterardatostbUsuario.email, iterardatostbUsuario.contrasena);
                 }
 
@@ -79,7 +82,21 @@ namespace appVentas.VISTA
             }
 
             dtgProductos.Rows.Add(txtIdProd.Text, txtNomProd.Text, txtPrecioProd.Text,txtCantidad.Text, txtTotal.Text);
-            calcularTotal();
+            double suma = 0;
+            for (int i=0; i < dtgProductos.RowCount;i++)
+            {
+                String datosAOperar = dtgProductos.Rows[i].Cells[4].Value.ToString();
+                Double datosConvertidos = Convert.ToDouble(datosAOperar);
+
+                //suma = suma + datosConvertidos;
+                suma += datosConvertidos;
+                txtTotalFinal.Text = suma.ToString();
+
+
+            }
+
+
+            //calcularTotal();
         }
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
@@ -110,18 +127,61 @@ namespace appVentas.VISTA
                 //MessageBox.Show(ex.ToString());
             }
         }
-        void calcularTotal()
-        {
-            double total = 0;
-            foreach (DataGridViewRow row in dtgProductos.Rows)
-            {
-                total += Convert.ToDouble(row.Cells["total"].Value);
-            }
+        //void calcularTotal()
+        //{
+        //    double total = 0;
+        //    foreach (DataGridViewRow row in dtgProductos.Rows)
+        //    {
+        //        total += Convert.ToDouble(row.Cells["total"].Value);
+        //    }
 
-            txtCalcularTotal.Text = Convert.ToString(total);
+        //    txtTotalFinal.Text = Convert.ToString(total);
             
-        }
+        //}
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            using (sistema_ventasEntities bd = new sistema_ventasEntities())
+            {
+                tb_Venta tb_v = new tb_Venta();
+                String comboTipoDoc = cmbTipoDoc.SelectedValue.ToString();
+                String comboCliente = cmbCliente.SelectedValue.ToString();
+                tb_v.idDocumento = Convert.ToInt32(comboTipoDoc);
+                tb_v.idCliente = Convert.ToInt32(comboCliente);
+                tb_v.idUsuario = 1;
+                tb_v.totalVenta = Convert.ToDecimal(txtTotalFinal.Text);
+                tb_v.fecha = Convert.ToDateTime(dtpFecha.Text);
+                
+                bd.tb_Venta.Add(tb_v);
+                bd.SaveChanges();
+
+                detalleVenta dete = new detalleVenta();
+                for (int i = 0; i < dtgProductos.RowCount; i++)
+                {
+                    String idProducto = dtgProductos.Rows[i].Cells[0].Value.ToString();
+                    int idProductoConvertido = Convert.ToInt32(idProducto);
+
+                    String cantidad = dtgProductos.Rows[i].Cells[3].Value.ToString();
+                    int cantidadConvertidos = Convert.ToInt32(cantidad);
+
+                    String precio = dtgProductos.Rows[i].Cells[2].Value.ToString();
+                    Decimal precioConvertidos = Convert.ToDecimal(precio);
+
+                    String total = dtgProductos.Rows[i].Cells[4].Value.ToString();
+                    Decimal totalConvertidos = Convert.ToDecimal(total);
+
+                    dete.idVenta = Convert.ToInt32(txtIdNumeracion.Text);
+                    dete.idProducto = idProductoConvertido;
+                    dete.cantidad = cantidadConvertidos;
+                    dete.precio = precioConvertidos;
+                    dete.total = totalConvertidos;
+                    bd.detalleVenta.Add(dete);
+                    bd.SaveChanges();
+
+
+                }
+            }
         
+        }
     }
 }
