@@ -121,8 +121,8 @@ namespace appVentas.VISTA
             }
             catch (Exception )
             {
-                txtCantidad.Text = "0";
-                MessageBox.Show("No puede operar datos menores a 0");
+                txtCantidad.Text = "1";
+                
                 txtCantidad.Select();
                 //MessageBox.Show(ex.ToString());
             }
@@ -181,7 +181,49 @@ namespace appVentas.VISTA
 
                 }
             }
-        
+            retornoid();
+        }
+
+        private void txtBuscarProd_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(txtBuscarProd.Text == ""){
+                if (e.KeyCode == Keys.Enter)
+                {
+                    btnBuscar.PerformClick();
+                }
+            }else if (e.KeyCode == Keys.Enter)
+            {
+                using (sistema_ventasEntities bd = new sistema_ventasEntities())
+                {
+                    producto pr = new producto();
+                    int buscar = int.Parse(txtBuscarProd.Text);
+                    pr = bd.producto.Where(idBuscar => idBuscar.idProducto == buscar).First();
+                    txtIdProd.Text = Convert.ToString(pr.idProducto);
+                    txtNomProd.Text = Convert.ToString(pr.nombreProducto);
+                    txtPrecioProd.Text = Convert.ToString(pr.precioProducto);
+                    txtCantidad.Focus();
+                    txtBuscarProd.Text = "";
+                }
+            }
+        }
+        int intentos = 1;
+        private void txtCantidad_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (intentos == 2)
+                {
+                    btnAgregar.PerformClick();
+                    txtIdProd.Text = "";
+                    txtNomProd.Text = "";
+                    txtPrecioProd.Text = "";
+                    txtTotal.Text = "";
+                    intentos = 0;
+                    txtCantidad.Text = "1";
+                    txtBuscarProd.Focus();
+                }
+                intentos += 1;
+            }
         }
     }
 }

@@ -42,7 +42,6 @@
             this.txtPrecioProd = new System.Windows.Forms.TextBox();
             this.txtNomProd = new System.Windows.Forms.TextBox();
             this.txtIdProd = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.dtgProductos = new System.Windows.Forms.DataGridView();
@@ -58,6 +57,7 @@
             this.txtTotalFinal = new System.Windows.Forms.TextBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.txtBuscarProd = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dtgProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -167,6 +167,7 @@
             this.txtCantidad.TabIndex = 12;
             this.txtCantidad.Text = "1";
             this.txtCantidad.TextChanged += new System.EventHandler(this.txtCantidad_TextChanged);
+            this.txtCantidad.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCantidad_KeyUp);
             // 
             // txtPrecioProd
             // 
@@ -191,13 +192,6 @@
             this.txtIdProd.Name = "txtIdProd";
             this.txtIdProd.Size = new System.Drawing.Size(100, 20);
             this.txtIdProd.TabIndex = 15;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(247, 105);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(266, 20);
-            this.textBox8.TabIndex = 16;
             // 
             // btnBuscar
             // 
@@ -335,13 +329,21 @@
             this.dtpFecha.Size = new System.Drawing.Size(200, 26);
             this.dtpFecha.TabIndex = 26;
             // 
+            // txtBuscarProd
+            // 
+            this.txtBuscarProd.Location = new System.Drawing.Point(236, 104);
+            this.txtBuscarProd.Name = "txtBuscarProd";
+            this.txtBuscarProd.Size = new System.Drawing.Size(267, 20);
+            this.txtBuscarProd.TabIndex = 27;
+            this.txtBuscarProd.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBuscarProd_KeyUp);
+            // 
             // frmVentas
             // 
-            this.AcceptButton = this.btnAgregar;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(961, 484);
+            this.Controls.Add(this.txtBuscarProd);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.txtTotalFinal);
@@ -352,7 +354,6 @@
             this.Controls.Add(this.btnAgregar);
             this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.txtIdNumeracion);
-            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.txtIdProd);
             this.Controls.Add(this.txtNomProd);
             this.Controls.Add(this.txtPrecioProd);
@@ -388,7 +389,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.DataGridView dtgProductos;
@@ -408,5 +408,6 @@
         public System.Windows.Forms.TextBox txtTotalFinal;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.TextBox txtBuscarProd;
     }
 }
