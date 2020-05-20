@@ -182,6 +182,8 @@ namespace appVentas.VISTA
                 }
             }
             retornoid();
+            dtgProductos.Rows.Clear();
+            txtTotalFinal.Text = "";
         }
 
         private void txtBuscarProd_KeyUp(object sender, KeyEventArgs e)
@@ -203,6 +205,7 @@ namespace appVentas.VISTA
                     txtPrecioProd.Text = Convert.ToString(pr.precioProducto);
                     txtCantidad.Focus();
                     txtBuscarProd.Text = "";
+                    intentos = 2;
                 }
             }
         }
@@ -224,6 +227,11 @@ namespace appVentas.VISTA
                 }
                 intentos += 1;
             }
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
