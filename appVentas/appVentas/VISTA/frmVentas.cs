@@ -82,21 +82,15 @@ namespace appVentas.VISTA
             }
 
             dtgProductos.Rows.Add(txtIdProd.Text, txtNomProd.Text, txtPrecioProd.Text,txtCantidad.Text, txtTotal.Text);
-            double suma = 0;
-            for (int i=0; i < dtgProductos.RowCount;i++)
-            {
-                String datosAOperar = dtgProductos.Rows[i].Cells[4].Value.ToString();
-                Double datosConvertidos = Convert.ToDouble(datosAOperar);
+            calcularTotalFinal();
+            
+            //dtgProductos.Refresh();
+            dtgProductos.ClearSelection();
+            int obtenerUltimaFila = dtgProductos.Rows.Count - 1;
+            dtgProductos.FirstDisplayedScrollingRowIndex = obtenerUltimaFila;
+            dtgProductos.Rows[obtenerUltimaFila].Selected = true;
+              
 
-                //suma = suma + datosConvertidos;
-                suma += datosConvertidos;
-                txtTotalFinal.Text = suma.ToString();
-
-
-            }
-
-
-            //calcularTotal();
         }
 
         private void txtCantidad_TextChanged(object sender, EventArgs e)
@@ -124,20 +118,24 @@ namespace appVentas.VISTA
                 txtCantidad.Text = "1";
                 
                 txtCantidad.Select();
-                //MessageBox.Show(ex.ToString());
+                
             }
         }
-        //void calcularTotal()
-        //{
-        //    double total = 0;
-        //    foreach (DataGridViewRow row in dtgProductos.Rows)
-        //    {
-        //        total += Convert.ToDouble(row.Cells["total"].Value);
-        //    }
+        void calcularTotalFinal()
+        {
+            double suma = 0;
+            for (int i = 0; i < dtgProductos.RowCount; i++)
+            {
+                String datosAOperar = dtgProductos.Rows[i].Cells[4].Value.ToString();
+                Double datosConvertidos = Convert.ToDouble(datosAOperar);
 
-        //    txtTotalFinal.Text = Convert.ToString(total);
-            
-        //}
+                //suma = suma + datosConvertidos;
+                suma += datosConvertidos;
+                txtTotalFinal.Text = suma.ToString();
+
+
+            }
+        }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
@@ -232,6 +230,11 @@ namespace appVentas.VISTA
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void dtgProductos_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e)
+        {
+            calcularTotalFinal();
         }
     }
 }

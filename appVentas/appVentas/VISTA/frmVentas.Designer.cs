@@ -235,6 +235,7 @@
             this.dtgProductos.Size = new System.Drawing.Size(792, 150);
             this.dtgProductos.TabIndex = 20;
             this.dtgProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgProductos_CellContentClick);
+            this.dtgProductos.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtgProductos_RowsRemoved);
             // 
             // CODIGO
             // 
